@@ -1,129 +1,98 @@
 'use client';
-import { motion } from 'framer-motion';
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+
 import { useState } from 'react';
+import { CircleAlert, CircleCheck, Github, Linkedin, Mail, Send } from 'lucide-react';
+import { site } from '@/data/site';
+import { ExternalLink, Reveal, Section } from './ui';
+
+type Status = 'idle' | 'sending' | 'sent' | 'error';
 
 export default function Contact() {
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<Status>('idle');
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus('submitting');
-    
     const form = e.currentTarget;
-    const data = new FormData(form);
-
+    setStatus('sending');
     try {
-      // ---------------------------------------------------------
-      // CONNECTING TO YOUR REAL FORMSPREE ENDPOINT
-      // ---------------------------------------------------------
-      const response = await fetch("https://formspree.io/f/xeeljbwj", {
-        method: "POST",
-        body: data,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-
-      if (response.ok) {
-        setStatus('success');
-        form.reset();
-      } else {
-        setStatus('error');
-      }
-    } catch (error) {
+      const r = await fetch(site.formspreeEndpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      if (!r.ok) throw new Error(String(r.status));
+      setStatus('sent');
+      form.reset();
+    } catch {
       setStatus('error');
     }
   }
 
+  const input = 'w-full rounded-lg border border-line bg-bg/60 px-3.5 py-2.5 text-text placeholder:text-faint outline-none transition focus:border-accent/60';
+
   return (
-    <section id="contact" className="relative py-32 px-6">
-      <div className="max-w-4xl mx-auto">
-        
-        {/* Header */}
-        <motion.div 
-           initial={{ opacity: 0 }}
-           whileInView={{ opacity: 1 }}
-           viewport={{ once: true }}
-           className="mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-mono">
-            Initialize <span className="text-green-500">Transmission</span>
-          </h2>
-          <div className="h-[1px] w-full bg-gradient-to-r from-green-500 to-transparent opacity-30" />
-        </motion.div>
+    <Section
+      id="contact"
+      eyebrow="06 - Contact"
+      title="Let’s talk"
+      intro="Open to AI engineering roles, research collaborations and commercial licences for APEX."
+    >
+      <div className="grid gap-8 lg:grid-cols-5">
+        <Reveal className="lg:col-span-3">
+          <form onSubmit={onSubmit} className="space-y-4 rounded-2xl border border-line bg-surface/80 p-6">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="block text-sm">
+                <span className="text-muted">Name</span>
+                <input name="name" autoComplete="name" className={`mt-1.5 ${input}`} placeholder="Your name" />
+              </label>
+              <label className="block text-sm">
+                <span className="text-muted">Email</span>
+                <input name="email" type="email" required autoComplete="email" className={`mt-1.5 ${input}`} placeholder="you@company.com" />
+              </label>
+            </div>
+            <label className="block text-sm">
+              <span className="text-muted">Message</span>
+              <textarea name="message" required rows={5} className={`mt-1.5 resize-none ${input}`} placeholder="What would you like to talk about?" />
+            </label>
+            <div className="flex flex-wrap items-center gap-4">
+              <button
+                type="submit"
+                disabled={status === 'sending'}
+                className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2.5 font-semibold text-bg transition hover:brightness-110 disabled:opacity-60"
+              >
+                <Send size={16} aria-hidden /> {status === 'sending' ? 'Sending…' : 'Send message'}
+              </button>
+              <p role="status" className="text-sm">
+                {status === 'sent' && <span className="inline-flex items-center gap-1.5 text-accent"><CircleCheck size={16} aria-hidden /> Thanks - I will reply soon.</span>}
+                {status === 'error' && (
+                  <span className="inline-flex items-center gap-1.5 text-red-400">
+                    <CircleAlert size={16} aria-hidden /> Could not send. Email me at {site.email}.
+                  </span>
+                )}
+              </p>
+            </div>
+          </form>
+        </Reveal>
 
-        {/* The Form */}
-        <div className="relative bg-black/80 backdrop-blur-xl border border-green-500/30 p-8 md:p-12 rounded-lg overflow-hidden shadow-[0_0_50px_rgba(0,255,65,0.05)]">
-            
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-500 to-transparent opacity-50" />
-
-            <form onSubmit={handleSubmit} className="space-y-8 font-mono">
-                
-                {/* TO Field */}
-                <div className="flex flex-col md:flex-row md:items-center gap-4 border-b border-green-500/20 pb-4">
-                    <span className="text-green-500 font-bold min-w-[60px]">{'>'} TO:</span>
-                    <span className="text-neutral-400 tracking-wider">moh203.kamal@gmail.com</span>
-                    <span className="text-xs text-green-500/50 border border-green-500/20 px-2 py-0.5 rounded ml-auto animate-pulse">SECURE_CHANNEL_ACTIVE</span>
-                </div>
-
-                {/* FROM Field */}
-                <div className="flex flex-col md:flex-row md:items-center gap-4 border-b border-green-500/20 pb-4 group focus-within:border-green-500 transition-colors">
-                    <label htmlFor="email" className="text-green-500 font-bold min-w-[60px]">{'>'} FROM:</label>
-                    <input 
-                        required
-                        type="email" 
-                        name="email"
-                        id="email" 
-                        placeholder="ENTER_YOUR_EMAIL_ADDRESS" 
-                        className="bg-transparent border-none outline-none text-white w-full placeholder:text-neutral-700 focus:placeholder:text-green-900 transition-colors"
-                    />
-                </div>
-
-                {/* MESSAGE Field */}
-                <div className="flex flex-col gap-4 group focus-within:border-green-500 transition-colors">
-                    <label htmlFor="message" className="text-green-500 font-bold">{'>'} DATA_PACKET:</label>
-                    <textarea 
-                        required
-                        name="message"
-                        id="message" 
-                        rows={6} 
-                        placeholder="TYPE_YOUR_MESSAGE_HERE..." 
-                        className="bg-black/40 border border-green-500/10 rounded p-4 text-white outline-none focus:border-green-500/50 transition-all resize-none placeholder:text-neutral-700"
-                    />
-                </div>
-
-                {/* Submit Button */}
-                <div className="flex items-center gap-6">
-                    <button 
-                        type="submit" 
-                        disabled={status === 'submitting'}
-                        className="group flex items-center gap-4 bg-green-500/10 hover:bg-green-500 text-green-500 hover:text-black px-8 py-4 rounded border border-green-500/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                        <span className="font-bold tracking-widest">
-                            {status === 'submitting' ? 'TRANSMITTING...' : 'SEND TRANSMISSION'}
-                        </span>
-                        <Send size={18} className={`transition-transform ${status === 'submitting' ? 'animate-ping' : 'group-hover:translate-x-1'}`} />
-                    </button>
-
-                    {/* Status Messages */}
-                    {status === 'success' && (
-                        <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="flex items-center gap-2 text-green-400">
-                            <CheckCircle size={20} />
-                            <span>TRANSMISSION RECEIVED.</span>
-                        </motion.div>
-                    )}
-                    {status === 'error' && (
-                        <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="flex items-center gap-2 text-red-500">
-                            <AlertCircle size={20} />
-                            <span>CONNECTION ERROR. CHECK LOGS.</span>
-                        </motion.div>
-                    )}
-                </div>
-
-            </form>
-        </div>
+        <Reveal className="lg:col-span-2" delay={0.08}>
+          <ul className="space-y-3">
+            <li>
+              <a href={`mailto:${site.email}`} className="flex items-center gap-3 rounded-2xl border border-line bg-surface/60 p-4 transition hover:border-accent/50">
+                <Mail size={18} className="text-accent" aria-hidden />
+                <span><span className="block text-sm text-muted">Email</span>{site.email}</span>
+              </a>
+            </li>
+            <li>
+              <ExternalLink href={site.linkedin} className="flex items-center gap-3 rounded-2xl border border-line bg-surface/60 p-4 transition hover:border-accent/50">
+                <Linkedin size={18} className="text-accent" aria-hidden />
+                <span><span className="block text-sm text-muted">LinkedIn</span>{site.linkedin.replace('https://www.', '')}</span>
+              </ExternalLink>
+            </li>
+            <li>
+              <ExternalLink href={site.github} className="flex items-center gap-3 rounded-2xl border border-line bg-surface/60 p-4 transition hover:border-accent/50">
+                <Github size={18} className="text-accent" aria-hidden />
+                <span><span className="block text-sm text-muted">GitHub</span>{site.github.replace('https://', '')}</span>
+              </ExternalLink>
+            </li>
+          </ul>
+        </Reveal>
       </div>
-    </section>
+    </Section>
   );
 }

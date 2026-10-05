@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio - Mohammad Kamal Abdulaziz
 
-## Getting Started
+Personal site: projects, research, experience and contact. Built with Next.js (App Router), React, Tailwind CSS v4
+and Framer Motion; deployed on Vercel.
 
-First, run the development server:
+## Edit the content
+
+Everything shown on the site lives in `src/data/` - the components only lay it out:
+
+| File | What it holds |
+|---|---|
+| `src/data/site.ts` | name, role, summary, links (GitHub, LinkedIn, CV), contact-form endpoint, navigation |
+| `src/data/projects.ts` | projects: one entry per project (`featured: true` for the large cards) |
+| `src/data/profile.ts` | experience, education, recognition, skills, AI-augmented workflow, concept ideas |
+| `public/CV.pdf` | the CV behind every "Download CV" button |
+
+Adding a project is one new object in `projects.ts`; its card, links and details panel appear automatically.
+
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # production build (also type-checks)
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deploy
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Vercel builds every push to `main`. Nothing needs to be configured: the production domain is read from Vercel's
+`VERCEL_PROJECT_PRODUCTION_URL` for metadata, `sitemap.xml`, `robots.txt` and the social preview image. To use a
+custom domain, set `NEXT_PUBLIC_SITE_URL=https://your-domain` in the Vercel project settings.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Structure
 
-## Learn More
+```
+src/app/            layout (fonts, metadata), page, robots, sitemap, social preview image
+src/components/     Nav, Hero, Work (project cards + details), Research, Experience, Skills, Ideas, Contact, Footer
+src/data/           all content (see above)
+public/CV.pdf       CV
+```
 
-To learn more about Next.js, take a look at the following resources:
+The contact form posts to [Formspree](https://formspree.io); change `formspreeEndpoint` in `site.ts` to use another form.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Code: MIT. Text, CV and images: © Mohammad Kamal Abdulaziz, all rights reserved.
