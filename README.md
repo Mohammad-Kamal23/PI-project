@@ -1,7 +1,7 @@
 # Portfolio - Mohammad Kamal Abdulaziz
 
 Personal site: projects, research, experience and contact. Built with Next.js (App Router), React, Tailwind CSS v4
-and Framer Motion; deployed on Vercel.
+and Framer Motion; made for Vercel.
 
 ## Edit the content
 
@@ -27,9 +27,9 @@ npm run lint
 
 ## Deploy
 
-Vercel builds every push to `main`. Nothing needs to be configured: the production domain is read from Vercel's
-`VERCEL_PROJECT_PRODUCTION_URL` for metadata, `sitemap.xml`, `robots.txt` and the social preview image. To use a
-custom domain, set `NEXT_PUBLIC_SITE_URL=https://your-domain` in the Vercel project settings.
+Import this repository in Vercel (*Add New → Project*); Vercel then builds every push to `main`. The production
+domain is read from Vercel's `VERCEL_PROJECT_PRODUCTION_URL` for metadata, `sitemap.xml`, `robots.txt` and the social
+preview image. For a custom domain, set `NEXT_PUBLIC_SITE_URL=https://your-domain` in the Vercel project settings.
 
 ## Structure
 

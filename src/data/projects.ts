@@ -98,8 +98,8 @@ export const projects: Project[] = [
     year: '2025–2026',
     featured: true,
     summary:
-      'A mobile app for tomato-leaf pests, mainly the tomato leafminer (Tuta absoluta). YOLOv8 detects the damage, ' +
-      'ShuffleNetV2 grades its severity and Gemini gives advice in Arabic or English.',
+      'A mobile app for tomato leaves, mainly the tomato leafminer (Tuta absoluta). YOLOv8 finds the leaves, ' +
+      'ShuffleNetV2 grades the damage and Gemini gives advice in Arabic or English.',
     highlights: [
       'Flutter app with Firebase sign-in, live camera detection and an offline mode',
       'FastAPI + ONNX Runtime backend for Google Cloud Run (GPU); results smoothed across frames',
@@ -128,8 +128,8 @@ export const projects: Project[] = [
     year: '2026',
     featured: true,
     summary:
-      'An n8n workflow that signs and stamps PDFs placed in a shared folder. OpenCV template matching and Florence-2 ' +
-      'phrase grounding find the signature and stamp areas in English and Arabic documents. Overlapping boxes are ' +
+      'An n8n workflow that signs and stamps PDFs placed in a shared folder. OpenCV template matching (and optionally ' +
+      'Florence-2) finds the signature and stamp areas in English and Arabic documents. Overlapping boxes are ' +
       'merged so nothing is stamped twice; a document with no area gets an extra audit page.',
     highlights: [
       'Docker stack: n8n, FastAPI, a Streamlit UI and an SQL audit log',
