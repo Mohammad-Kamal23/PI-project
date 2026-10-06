@@ -39,3 +39,5 @@ export type Concept = {
 };
 
 export type WorkflowCard = { title: string; text: string };
+
+export type Achievement = { title: string; text: string; link?: Link };

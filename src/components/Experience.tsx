@@ -2,7 +2,7 @@
 
 import { Award, GraduationCap } from 'lucide-react';
 import { achievements, education, experience } from '@/data/profile';
-import { Reveal, Section } from './ui';
+import { ExternalLink, Reveal, Section } from './ui';
 
 export default function Experience() {
   return (
@@ -47,6 +47,11 @@ export default function Experience() {
                   <li key={a.title}>
                     <p className="font-medium">{a.title}</p>
                     <p className="text-sm text-muted">{a.text}</p>
+                    {a.link && (
+                      <ExternalLink href={a.link.href} className="mt-1 inline-block text-sm font-medium text-accent underline-offset-4 hover:underline">
+                        {a.link.label} ↗
+                      </ExternalLink>
+                    )}
                   </li>
                 ))}
               </ul>

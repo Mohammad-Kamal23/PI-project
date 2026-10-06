@@ -1,4 +1,4 @@
-import type { Concept, Experience, SkillGroup, WorkflowCard } from './types';
+import type { Achievement, Concept, Experience, SkillGroup, WorkflowCard } from './types';
 
 export const experience: Experience[] = [
   {
@@ -40,8 +40,12 @@ export const education = {
   period: 'Graduated Jan 2026',
 };
 
-export const achievements = [
-  { title: 'International presenter', text: 'Al Ain University Student Research Conference, UAE (Jan 2026)' },
+export const achievements: Achievement[] = [
+  {
+    title: 'Conference participant, Al Ain University (UAE)',
+    text: 'Student Conference of the Association of Student Affairs Deanships at Arab Universities, Jan 2026. Showcased the GISLC research.',
+    link: { label: 'View certificate', href: '/certificates/al-ain-university-2026.jpg' },
+  },
   { title: 'Peer-reviewed publication', text: 'GISLC, Electronics (MDPI), 2026' },
 ];
 
