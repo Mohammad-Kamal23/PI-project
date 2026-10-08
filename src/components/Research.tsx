@@ -1,7 +1,7 @@
 'use client';
 
 import { BookOpen, FlaskConical } from 'lucide-react';
-import { paper, repo } from '@/data/site';
+import { repo } from '@/data/site';
 import { ExternalLink, Reveal, Section } from './ui';
 
 const publications = [
@@ -18,9 +18,8 @@ const publications = [
     kind: 'Work in progress',
     citation: 'M. K. Abdulaziz, R. Al-Sayyed',
     title: 'APEX: Latent-Space Kernel Fusion for Selective Prediction with Frozen Medical Image Classifiers',
-    venue: 'Unpublished draft, prepared for the IEEE CIS Jordan AI Research Contest (Track A), 2026',
+    venue: 'Paper in preparation, for the IEEE CIS Jordan AI Research Contest (Track A)',
     links: [
-      { label: 'Draft paper (PDF)', href: paper('APEX_paper.pdf') },
       { label: 'Code', href: repo('apex-selective-prediction') },
     ],
   },

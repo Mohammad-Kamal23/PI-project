@@ -1,4 +1,4 @@
-import { paper, repo } from './site';
+import { repo } from './site';
 import type { Project } from './types';
 
 // Add a project = add one entry. `featured` projects get the large cards; the rest are listed below them.
@@ -18,7 +18,7 @@ export const projects: Project[] = [
       '18 configurations: 6 medical imaging datasets × 3 backbones (ViT, ConvNeXt, MobileNetV3), 5-fold cross-validation',
       'AURC −44.3% and balanced accuracy +4.18 points against the base model',
       'Brier, NLL and AURC improve in 18 of 18 configurations against all six baselines (Wilcoxon p = 7.6 × 10⁻⁶)',
-      'The repository includes the predictions and a script that recomputes the paper’s tables',
+      'The repository includes the predictions and a script that recomputes the results',
     ],
     metrics: [
       { value: '−44.3%', label: 'AURC' },
@@ -28,7 +28,6 @@ export const projects: Project[] = [
     stack: ['Python', 'scikit-learn', 'PyTorch', 'timm', 'SciPy'],
     links: [
       { label: 'Code', href: repo('apex-selective-prediction') },
-      { label: 'Draft paper (PDF)', href: paper('APEX_paper.pdf') },
     ],
     details: [
       {
@@ -51,7 +50,7 @@ export const projects: Project[] = [
         heading: 'Context',
         paragraphs: [
           'Prepared for the IEEE CIS Jordan AI Research Contest (Track A), with Dr. Rizik Al-Sayyed, University of Jordan. ' +
-            'The paper is a work in progress and not yet published.',
+            'The paper is in preparation and not yet published.',
         ],
       },
     ],
