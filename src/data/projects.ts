@@ -8,7 +8,7 @@ export const projects: Project[] = [
     title: 'APEX',
     tagline: 'Selective prediction for frozen medical image classifiers',
     kind: 'Research',
-    status: 'Paper + code',
+    status: 'Work in progress',
     year: '2026',
     featured: true,
     summary:
@@ -28,7 +28,7 @@ export const projects: Project[] = [
     stack: ['Python', 'scikit-learn', 'PyTorch', 'timm', 'SciPy'],
     links: [
       { label: 'Code', href: repo('apex-selective-prediction') },
-      { label: 'Paper (PDF)', href: paper('APEX_paper.pdf') },
+      { label: 'Draft paper (PDF)', href: paper('APEX_paper.pdf') },
     ],
     details: [
       {
@@ -47,7 +47,13 @@ export const projects: Project[] = [
           'Calibration error is not better than the parametric calibrators; the paper reports this',
         ],
       },
-      { heading: 'Context', paragraphs: ['IEEE CIS Jordan AI Research Contest (Track A), with Dr. Rizik Al-Sayyed, University of Jordan.'] },
+      {
+        heading: 'Context',
+        paragraphs: [
+          'Prepared for the IEEE CIS Jordan AI Research Contest (Track A), with Dr. Rizik Al-Sayyed, University of Jordan. ' +
+            'The paper is a work in progress and not yet published.',
+        ],
+      },
     ],
   },
   {

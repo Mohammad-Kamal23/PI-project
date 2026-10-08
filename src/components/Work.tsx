@@ -8,7 +8,7 @@ import Modal, { Details } from './Modal';
 import { LinkButton, Pill, Reveal, Section, Tag } from './ui';
 
 function statusTone(p: Project) {
-  if (/development|offline/i.test(p.status)) return 'warn' as const;
+  if (/development|offline|progress/i.test(p.status)) return 'warn' as const;
   if (p.kind === 'Coursework') return 'neutral' as const;
   return 'accent' as const;
 }

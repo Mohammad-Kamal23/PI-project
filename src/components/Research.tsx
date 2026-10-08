@@ -15,12 +15,12 @@ const publications = [
   },
   {
     icon: FlaskConical,
-    kind: 'Research paper + code',
+    kind: 'Work in progress',
     citation: 'M. K. Abdulaziz, R. Al-Sayyed',
     title: 'APEX: Latent-Space Kernel Fusion for Selective Prediction with Frozen Medical Image Classifiers',
-    venue: 'IEEE CIS Jordan AI Research Contest, Track A, 2026',
+    venue: 'Unpublished draft, prepared for the IEEE CIS Jordan AI Research Contest (Track A), 2026',
     links: [
-      { label: 'Paper (PDF)', href: paper('APEX_paper.pdf') },
+      { label: 'Draft paper (PDF)', href: paper('APEX_paper.pdf') },
       { label: 'Code', href: repo('apex-selective-prediction') },
     ],
   },
@@ -28,7 +28,7 @@ const publications = [
 
 export default function Research() {
   return (
-    <Section id="research" eyebrow="02 - Research" title="Publications">
+    <Section id="research" eyebrow="02 - Research" title="Papers">
       <div className="grid gap-6 md:grid-cols-2">
         {publications.map((p, i) => (
           <Reveal key={p.title} delay={i * 0.06}>
