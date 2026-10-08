@@ -1,4 +1,4 @@
-import { repo } from './site';
+import { paper, repo } from './site';
 import type { Project } from './types';
 
 // Add a project = add one entry. `featured` projects get the large cards; the rest are listed below them.
@@ -28,7 +28,7 @@ export const projects: Project[] = [
     stack: ['Python', 'scikit-learn', 'PyTorch', 'timm', 'SciPy'],
     links: [
       { label: 'Code', href: repo('apex-selective-prediction') },
-      { label: 'Paper (PDF)', href: `${repo('apex-selective-prediction')}/blob/main/paper/APEX_paper.pdf` },
+      { label: 'Paper (PDF)', href: paper('APEX_paper.pdf') },
     ],
     details: [
       {

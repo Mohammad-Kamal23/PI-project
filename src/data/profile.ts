@@ -4,7 +4,7 @@ export const experience: Experience[] = [
   {
     org: 'Sager Drone',
     role: 'AI Engineer Intern',
-    period: 'Jul 2026 – Present',
+    period: 'Jul 2026 – Oct 2026',
     bullets: [
       'VLM spatial reasoning and RAG: a deterministic Q&A engine on Qwen2.5-VL. A knowledge graph and two databases ' +
         '(spatial index, domain knowledge) add context to the prompt, and an algorithmic gate checks each answer.',

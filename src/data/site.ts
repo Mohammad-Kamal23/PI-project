@@ -11,7 +11,8 @@ export const site = {
   summary: 'Data scientist and AI engineer (B.Sc. Data Science, University of Jordan) working on computer vision, multimodal AI and MLOps.',
   location: 'Amman, Jordan',
   email: 'moh203.kamal@gmail.com',
-  currently: { role: 'AI Engineer Intern', org: 'Sager Drone', since: 'Jul 2026' },
+  // Current role, shown as a badge at the top of the page; null hides the badge.
+  currently: null as { role: string; org: string } | null,
   github: `https://github.com/${GITHUB_USER}`,
   linkedin: 'https://www.linkedin.com/in/mohammadabdulaziz23',
   cv: '/CV.pdf',
@@ -20,6 +21,9 @@ export const site = {
 } as const;
 
 export const repo = (name: string) => `https://github.com/${GITHUB_USER}/${name}`;
+
+// Papers served from public/papers/ on this site
+export const paper = (file: string) => `/papers/${file}`;
 
 /**
  * Public address of the site, used for metadata, sitemap and social previews. Set NEXT_PUBLIC_SITE_URL for a custom

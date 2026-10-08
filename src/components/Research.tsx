@@ -1,7 +1,7 @@
 'use client';
 
 import { BookOpen, FlaskConical } from 'lucide-react';
-import { repo } from '@/data/site';
+import { paper, repo } from '@/data/site';
 import { ExternalLink, Reveal, Section } from './ui';
 
 const publications = [
@@ -20,7 +20,7 @@ const publications = [
     title: 'APEX: Latent-Space Kernel Fusion for Selective Prediction with Frozen Medical Image Classifiers',
     venue: 'IEEE CIS Jordan AI Research Contest, Track A, 2026',
     links: [
-      { label: 'Paper (PDF)', href: `${repo('apex-selective-prediction')}/blob/main/paper/APEX_paper.pdf` },
+      { label: 'Paper (PDF)', href: paper('APEX_paper.pdf') },
       { label: 'Code', href: repo('apex-selective-prediction') },
     ],
   },

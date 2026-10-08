@@ -17,13 +17,15 @@ export default function Hero() {
     <section id="top" className="relative z-10 mx-auto flex min-h-[86vh] max-w-6xl flex-col justify-center px-4 pt-28 pb-16 sm:px-6">
       <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: 'easeOut' }}>
         <div className="flex flex-wrap items-center gap-3 text-sm text-muted">
-          <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent-soft px-3 py-1 text-accent">
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-60" />
-              <span className="relative inline-flex size-2 rounded-full bg-accent" />
+          {site.currently && (
+            <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent-soft px-3 py-1 text-accent">
+              <span className="relative flex size-2">
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-60" />
+                <span className="relative inline-flex size-2 rounded-full bg-accent" />
+              </span>
+              {site.currently.role} @ {site.currently.org}
             </span>
-            {site.currently.role} @ {site.currently.org}
-          </span>
+          )}
           <span className="inline-flex items-center gap-1.5"><MapPin size={14} aria-hidden /> {site.location}</span>
         </div>
 
